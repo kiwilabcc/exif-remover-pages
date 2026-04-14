@@ -1,0 +1,44 @@
+{
+  "name": "exif-remover-pages",
+  "image": "mcr.microsoft.com/devcontainers/base:trixie",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    },
+    // "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+    "ghcr.io/devcontainers-extra/features/claude-code:1": {
+      "version": "2.1.104"
+    }
+  },
+  "mounts": [
+    {
+        "source": "${localEnv:HOME}/WorkSpace/tmp/exif_remover_flutter",
+        "target": "/workspaces/exif_remover_flutter",
+        "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/WorkSpace/agent_configs/claude_code_yieldnone/dot_claude",
+      "target": "/home/vscode/.claude",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/WorkSpace/agent_configs/claude_code_yieldnone/dot_claude.json",
+      "target": "/home/vscode/.claude.json",
+      "type": "bind"
+    }
+  ],
+  "forwardPorts": [
+    5173,
+    4173
+  ],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "notify"
+    },
+    "4173": {
+      "label": "Vite Preview",
+      "onAutoForward": "notify"
+    }
+  }
+}
