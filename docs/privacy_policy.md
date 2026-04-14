@@ -1,62 +1,49 @@
-**Privacy Policy**
+# Privacy Policy
 
-This privacy policy applies to the Photo Privacy EXIF Eraser app (hereby referred to as "Application") for mobile devices that was created by Zhaoyu Wang (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
+**Effective date:** 2026-04-14
 
-**Information Collection and Use**
+## Overview
 
-The Application collects information when you download and use it. This information may include information such as
+Privacy Eraser is a mobile application that scans your photos for hidden EXIF metadata (GPS coordinates, camera details, timestamps) and creates cleaned copies with that metadata removed. This policy explains how the app handles your information.
 
-*   Your device's Internet Protocol address (e.g. IP address)
-*   The pages of the Application that you visit, the time and date of your visit, the time spent on those pages
-*   The time spent on the Application
-*   The operating system you use on your mobile device
+## On-Device Processing
 
-The Application does not gather precise information about the location of your mobile device.
+All photo scanning and metadata cleaning happens entirely on your device. Your photos and their metadata are never uploaded, transmitted, or sent to any server.
 
-The Application does not use Artificial Intelligence (AI) technologies to process your data or provide features.
+## Data We Collect
 
-The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.
+We do not collect, store, or transmit any personal data. Specifically:
 
-For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.
+- No device or network identifiers are collected.
+- No usage monitoring or tracking tools are used.
+- No photos, metadata, or personal information ever leave your device.
+- No data is shared with external services.
 
-**Third Party Access**
+## How the App Works
 
-Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.
+1. You select photos from your photo library.
+2. The app scans the selected photos for EXIF metadata on your device.
+3. The app creates cleaned copies with metadata removed.
+4. You can open or share the cleaned copies from the result screen.
 
-The Service Provider may disclose User Provided and Automatically Collected Information:
+Your original photos are never modified or deleted. Only the photos you explicitly select are accessed — nothing is scanned automatically.
 
-*   as required by law, such as to comply with a subpoena, or similar legal process;
-*   when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;
-*   with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.
+## Photo Library Access
 
-**Opt-Out Rights**
+The app requests access to your photo library solely so you can select photos for scanning. Only the photos you choose are read. No automatic scanning or background access occurs.
 
-You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.
+## Children's Privacy
 
-**Data Retention Policy**
+The app is not directed at children under 13, and we do not knowingly collect personal information from children.
 
-The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at support@kiwilab.cc and they will respond in a reasonable time.
+## Data Retention
 
-**Children**
+Since no data is collected or transmitted, there is no data to retain or delete. All processing is temporary and happens in your device's memory during use.
 
-The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.
+## Changes to This Policy
 
-The Service Provider does not knowingly collect personally identifiable information from children. The Service Provider encourages all children to never submit any personally identifiable information through the Application and/or Services. The Service Provider encourage parents and legal guardians to monitor their children's Internet usage and to help enforce this Policy by instructing their children never to provide personally identifiable information through the Application and/or Services without their permission. If you have reason to believe that a child has provided personally identifiable information to the Service Provider through the Application and/or Services, please contact the Service Provider <span>(support@kiwilab.cc)</span> so that they will be able to take the necessary actions. You must also be at least 16 years of age to consent to the processing of your personally identifiable information in your country (in some countries we may allow your parent or guardian to do so on your behalf).
+We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.
 
-**Security**
+## Contact
 
-The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.
-
-**Changes**
-
-This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
-
-This privacy policy is effective as of 2026-04-14
-
-**Your Consent**
-
-By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.
-
-**Contact Us**
-
-If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at support@kiwilab.cc.
+If you have questions about this policy or the app's privacy practices, please contact us at [support@kiwilab.cc](mailto:support@kiwilab.cc).
