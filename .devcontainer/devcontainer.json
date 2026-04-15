@@ -1,5 +1,5 @@
 {
-  "name": "exif-remover-pages",
+  "name": "Demo Container",
   "image": "mcr.microsoft.com/devcontainers/base:trixie",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
@@ -10,10 +10,20 @@
       "version": "2.1.104"
     }
   },
+  "containerEnv": {
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "en_US.UTF-8"
+  },
+  "postCreateCommand": "npm install -g gsd-pi@latest",
   "mounts": [
     {
-        "source": "${localEnv:HOME}/WorkSpace/tmp/exif_remover_flutter",
-        "target": "/workspaces/exif_remover_flutter",
+        "source": "${localEnv:HOME}/WorkSpace/agent_configs/gsd/dot_gsd",
+        "target": "/home/vscode/.gsd",
+        "type": "bind"
+    },
+    {
+        "source": "${localEnv:HOME}/WorkSpace/agent_configs/gsd/auth_gpt_leann.json",
+        "target": "/home/vscode/.gsd/agent/auth.json",
         "type": "bind"
     },
     {
@@ -26,19 +36,5 @@
       "target": "/home/vscode/.claude.json",
       "type": "bind"
     }
-  ],
-  "forwardPorts": [
-    5173,
-    4173
-  ],
-  "portsAttributes": {
-    "5173": {
-      "label": "Vite Dev Server",
-      "onAutoForward": "notify"
-    },
-    "4173": {
-      "label": "Vite Preview",
-      "onAutoForward": "notify"
-    }
-  }
+  ]
 }
