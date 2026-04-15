@@ -2,9 +2,11 @@ import { describe, it, expect, afterEach } from 'vitest'
 import { render, screen, cleanup } from '@testing-library/react'
 import { getPageData, pages } from '../legal-content'
 import { LegalPage } from '../components/LegalPage'
+import App from '../App'
 import privacyMarkdown from '../../docs/privacy_policy.md?raw'
 import termsMarkdown from '../../docs/terms.md?raw'
 import supportMarkdown from '../../docs/support.md?raw'
+import appSource from '../App.tsx?raw'
 
 afterEach(cleanup)
 
@@ -191,5 +193,44 @@ describe('Negative cases', () => {
     expect(pages.privacy.title).not.toBe(pages.terms.title)
     expect(pages.privacy.title).not.toBe(pages.support.title)
     expect(pages.terms.title).not.toBe(pages.support.title)
+  })
+})
+
+// ── Landing page support retarget ──────────────────────────────────────
+
+describe('Landing page support retarget', () => {
+  it('nav Support link points to /support/ not #support', () => {
+    render(<App />)
+    const supportLink = screen.getByRole('link', { name: 'Support' })
+    expect(supportLink).toHaveAttribute('href', '/support/')
+    expect(supportLink).not.toHaveAttribute('href', '#support')
+  })
+
+  it('has a support card linking to /support/', () => {
+    render(<App />)
+    const supportCard = screen.getByRole('link', { name: /Visit support page/i })
+    expect(supportCard).toHaveAttribute('href', '/support/')
+  })
+
+  it('stale "support site is being set up" phrase is absent', () => {
+    render(<App />)
+    expect(screen.queryByText(/support site is being set up/i)).not.toBeInTheDocument()
+  })
+
+  it('stale "reach out through the app store listing" phrase is absent', () => {
+    render(<App />)
+    expect(screen.queryByText(/reach out through the app store listing/i)).not.toBeInTheDocument()
+  })
+
+  it('no inline FAQ details elements on home page', () => {
+    render(<App />)
+    const detailsElements = screen.queryAllByRole('group')
+    expect(detailsElements).toHaveLength(0)
+  })
+
+  it('support nav item in source uses /support/ not #support', () => {
+    // Source-level regression guard
+    expect(appSource).not.toMatch(/href:\s*['"]#support['"]/)
+    expect(appSource).toMatch(/href:\s*['"]\/support\/['"]/)
   })
 })

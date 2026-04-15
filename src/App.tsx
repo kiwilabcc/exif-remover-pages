@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
   { label: 'Privacy', href: '/privacy/' },
   { label: 'Terms', href: '/terms/' },
-  { label: 'Support', href: '#support' },
+  { label: 'Support', href: '/support/' },
 ] as const
 
 const PROOF_POINTS = [
@@ -143,46 +143,15 @@ function App() {
           <span className="legal-link-cta">Read full terms →</span>
         </a>
 
-        <article id="support" className="legal-block">
+        <a href="/support/" className="legal-link-card">
+          <span className="legal-link-icon" aria-hidden="true">💬</span>
           <h2>Support</h2>
           <p>
-            We want to help you get the most out of Privacy Eraser. Below
-            you will find answers to common questions.
+            Find answers to common questions about how Privacy Eraser works,
+            data safety, and what metadata is removed.
           </p>
-          <details>
-            <summary>How does Privacy Eraser protect my photos?</summary>
-            <p>
-              All processing happens entirely on your device. Your photos
-              never leave your device or get shared with third parties.
-            </p>
-          </details>
-          <details>
-            <summary>Does the app modify my photos?</summary>
-            <p>
-              The app creates cleaned copies with EXIF metadata removed.
-              Original photos are not modified or deleted.
-            </p>
-          </details>
-          <details>
-            <summary>What metadata does the app detect?</summary>
-            <p>
-              The app can identify GPS coordinates, camera details,
-              timestamps, and other EXIF metadata embedded in your photos.
-            </p>
-          </details>
-          <details>
-            <summary>Why does the app need photo access?</summary>
-            <p>
-              Photo access is required to scan your selected photos for
-              metadata. Only the photos you choose are accessed — nothing is
-              scanned automatically.
-            </p>
-          </details>
-          <p className="support-note">
-            Our support site is being set up. For urgent inquiries, please
-            reach out through the app store listing.
-          </p>
-        </article>
+          <span className="legal-link-cta">Visit support page →</span>
+        </a>
       </section>
 
       {/* Footer */}
