@@ -1,7 +1,8 @@
 import privacyMarkdown from '../docs/privacy_policy.md?raw'
 import termsMarkdown from '../docs/terms.md?raw'
+import supportMarkdown from '../docs/support.md?raw'
 
-export type PageVariant = 'privacy' | 'terms'
+export type PageVariant = 'privacy' | 'terms' | 'support'
 
 export interface LegalPageData {
   title: string
@@ -22,9 +23,15 @@ export const pages: Record<PageVariant, LegalPageData> = {
       'Terms of service for Privacy Eraser, an on-device EXIF photo scanner.',
     markdown: termsMarkdown,
   },
+  support: {
+    title: 'Support — Privacy Eraser',
+    description:
+      'Privacy Eraser support center. Frequently asked questions and contact information for the on-device EXIF photo scanner.',
+    markdown: supportMarkdown,
+  },
 } as const
 
-const validVariants = new Set<string>(['privacy', 'terms'])
+const validVariants = new Set<string>(['privacy', 'terms', 'support'])
 
 export function getPageData(variant: string): LegalPageData | null {
   if (!validVariants.has(variant)) return null

@@ -4,6 +4,7 @@ import { getPageData, pages } from '../legal-content'
 import { LegalPage } from '../components/LegalPage'
 import privacyMarkdown from '../../docs/privacy_policy.md?raw'
 import termsMarkdown from '../../docs/terms.md?raw'
+import supportMarkdown from '../../docs/support.md?raw'
 
 afterEach(cleanup)
 
@@ -30,6 +31,13 @@ describe('getPageData', () => {
     expect(getPageData('home')).toBeNull()
   })
 
+  it('returns support page data for "support" variant', () => {
+    const data = getPageData('support')
+    expect(data).not.toBeNull()
+    expect(data!.title).toContain('Support')
+    expect(data!.markdown).toBe(supportMarkdown)
+  })
+
   it('returns null for empty string', () => {
     expect(getPageData('')).toBeNull()
   })
@@ -48,6 +56,12 @@ describe('Legal page headings', () => {
     render(<LegalPage data={pages.terms} />)
     const heading = screen.getByRole('heading', { level: 1 })
     expect(heading.textContent).toContain('Terms of Service')
+  })
+
+  it('support page has a top-level heading with "Support"', () => {
+    render(<LegalPage data={pages.support} />)
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading.textContent).toContain('Support')
   })
 })
 
@@ -75,6 +89,31 @@ describe('Docs-driven content rendering', () => {
     expect(screen.getByText(/"as is" without warranties/i)).toBeInTheDocument()
   })
 
+  it('support page renders content from docs/support.md', () => {
+    render(<LegalPage data={pages.support} />)
+    const headings = screen.getAllByRole('heading')
+    const headingTexts = headings.map((h) => h.textContent)
+    expect(headingTexts.some((t) => t?.includes('Support'))).toBe(true)
+    expect(headingTexts.some((t) => t?.includes('Frequently Asked Questions'))).toBe(true)
+    expect(headingTexts.some((t) => t?.includes('Contact'))).toBe(true)
+    // Verify FAQ content renders
+    expect(screen.getByText(/scans your photos for hidden EXIF metadata/i)).toBeInTheDocument()
+  })
+
+  it('support page includes a contact email link', () => {
+    render(<LegalPage data={pages.support} />)
+    const emailLink = screen.getByRole('link', { name: /support@kiwilab\.cc/i })
+    expect(emailLink).toHaveAttribute('href', 'mailto:support@kiwilab.cc')
+  })
+
+  it('support page includes legal cross-links to privacy and terms', () => {
+    render(<LegalPage data={pages.support} />)
+    const privacyLink = screen.getByRole('link', { name: /Privacy Policy/i })
+    const termsLink = screen.getByRole('link', { name: /Terms of Service/i })
+    expect(privacyLink).toHaveAttribute('href', '/privacy/')
+    expect(termsLink).toHaveAttribute('href', '/terms/')
+  })
+
   it('privacy and terms pages render distinct content', () => {
     const { container: privacyContainer } = render(
       <LegalPage data={pages.privacy} />,
@@ -88,6 +127,28 @@ describe('Docs-driven content rendering', () => {
     const termsHtml = termsContainer.innerHTML
 
     expect(privacyHtml).not.toBe(termsHtml)
+  })
+
+  it('support page renders distinct content from privacy and terms', () => {
+    const { container: supportContainer } = render(
+      <LegalPage data={pages.support} />,
+    )
+    const supportHtml = supportContainer.innerHTML
+    cleanup()
+
+    const { container: privacyContainer } = render(
+      <LegalPage data={pages.privacy} />,
+    )
+    const privacyHtml = privacyContainer.innerHTML
+    cleanup()
+
+    const { container: termsContainer } = render(
+      <LegalPage data={pages.terms} />,
+    )
+    const termsHtml = termsContainer.innerHTML
+
+    expect(supportHtml).not.toBe(privacyHtml)
+    expect(supportHtml).not.toBe(termsHtml)
   })
 })
 
@@ -117,13 +178,18 @@ describe('Negative cases', () => {
   it('both pages have non-empty markdown content', () => {
     expect(pages.privacy.markdown.trim().length).toBeGreaterThan(0)
     expect(pages.terms.markdown.trim().length).toBeGreaterThan(0)
+    expect(pages.support.markdown.trim().length).toBeGreaterThan(0)
   })
 
-  it('privacy and terms markdown are distinct documents', () => {
+  it('privacy, terms, and support markdown are distinct documents', () => {
     expect(pages.privacy.markdown).not.toBe(pages.terms.markdown)
+    expect(pages.privacy.markdown).not.toBe(pages.support.markdown)
+    expect(pages.terms.markdown).not.toBe(pages.support.markdown)
   })
 
   it('page data titles are distinct', () => {
     expect(pages.privacy.title).not.toBe(pages.terms.title)
+    expect(pages.privacy.title).not.toBe(pages.support.title)
+    expect(pages.terms.title).not.toBe(pages.support.title)
   })
 })
