@@ -4,8 +4,8 @@ import './App.css'
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#home' },
-  { label: 'Privacy', href: '#privacy' },
-  { label: 'Terms', href: '#terms' },
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
   { label: 'Support', href: '#support' },
 ] as const
 
