@@ -121,34 +121,27 @@ function App() {
         </p>
       </section>
 
-      {/* Legal & Support Surfaces */}
+      {/* Legal Links & Support */}
       <section className="legal-section">
-        <article id="privacy" className="legal-block">
+        <a href="/privacy/" className="legal-link-card">
+          <span className="legal-link-icon" aria-hidden="true">🔒</span>
           <h2>Privacy Policy</h2>
           <p>
-            Your privacy is our priority. Privacy Eraser is designed so that
-            your photos and their metadata never leave your device.
+            All photo scanning happens on your device. No photos, metadata,
+            or personal data are ever uploaded or transmitted.
           </p>
-          <ul className="legal-list">
-            <li>All photo scanning and metadata detection happens locally on your device.</li>
-            <li>No photos, metadata, or personal information ever leave your device.</li>
-            <li>We do not collect, store, or transmit any personal data.</li>
-            <li>No analytics, tracking, or third-party data sharing of any kind.</li>
-          </ul>
-        </article>
+          <span className="legal-link-cta">Read full policy →</span>
+        </a>
 
-        <article id="terms" className="legal-block">
+        <a href="/terms/" className="legal-link-card">
+          <span className="legal-link-icon" aria-hidden="true">📄</span>
           <h2>Terms of Service</h2>
           <p>
-            By using Privacy Eraser, you agree to use the app for personal,
-            lawful purposes. The app provides on-device EXIF metadata
-            scanning and cleaning for photos you select.
+            On-device EXIF scanning and cleaning for photos you select.
+            Original photos are never modified.
           </p>
-          <p>
-            Original photos are not modified or deleted. Cleaned copies can
-            be opened or shared from the result screen.
-          </p>
-        </article>
+          <span className="legal-link-cta">Read full terms →</span>
+        </a>
 
         <article id="support" className="legal-block">
           <h2>Support</h2>
