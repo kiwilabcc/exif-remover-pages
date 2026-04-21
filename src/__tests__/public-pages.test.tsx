@@ -234,3 +234,65 @@ describe('Landing page support retarget', () => {
     expect(appSource).toMatch(/href:\s*['"]\/support\/['"]/)
   })
 })
+
+// ── Screenshot truthfulness ────────────────────────────────────────────
+
+describe('Screenshot truthfulness', () => {
+  it('renders three screenshot images from repo-owned assets', () => {
+    render(<App />)
+    const images = document.querySelectorAll<HTMLImageElement>('.screenshot-image')
+    expect(images).toHaveLength(3)
+    // Each image must have a non-empty src (Vite resolves imports to hashed URLs)
+    for (const img of images) {
+      expect(img.src).toBeTruthy()
+      expect(img.src).not.toBe('')
+    }
+  })
+
+  it('screenshot images have descriptive alt text', () => {
+    render(<App />)
+    const images = document.querySelectorAll<HTMLImageElement>('.screenshot-image')
+    const altTexts = Array.from(images).map((img) => img.alt)
+    expect(altTexts).toHaveLength(3)
+    // Each alt text should mention Privacy Eraser and describe the screen
+    for (const alt of altTexts) {
+      expect(alt).toContain('Privacy Eraser')
+      expect(alt.length).toBeGreaterThan(20)
+    }
+  })
+
+  it('screenshot cards have correct labels', () => {
+    render(<App />)
+    expect(screen.getByText('Photo Scanner')).toBeInTheDocument()
+    expect(screen.getByText('Metadata View')).toBeInTheDocument()
+    expect(screen.getByText('Clean Results')).toBeInTheDocument()
+  })
+
+  it('placeholder note text is absent from the rendered page', () => {
+    render(<App />)
+    expect(screen.queryByText(/Screenshots are placeholders/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/actual app images coming soon/i)).not.toBeInTheDocument()
+  })
+
+  it('placeholder CSS class is absent from rendered DOM', () => {
+    render(<App />)
+    expect(document.querySelector('.screenshot-placeholder')).toBeNull()
+    expect(document.querySelector('.placeholder-icon')).toBeNull()
+    expect(document.querySelector('.placeholder-note')).toBeNull()
+  })
+
+  it('source code does not contain placeholder seam', () => {
+    // Source-level regression guard
+    expect(appSource).not.toMatch(/SCREENSHOT_PLACEHOLDERS/)
+    expect(appSource).not.toMatch(/Screenshots are placeholders/)
+    expect(appSource).not.toMatch(/actual app images coming soon/)
+    expect(appSource).not.toMatch(/screenshot-placeholder/)
+  })
+
+  it('screenshots are imported from repo-owned assets', () => {
+    // Verify imports exist in source
+    expect(appSource).toMatch(/import.*photo-scanner\.png/)
+    expect(appSource).toMatch(/import.*metadata-view\.png/)
+    expect(appSource).toMatch(/import.*clean-results\.png/)
+  })
+})

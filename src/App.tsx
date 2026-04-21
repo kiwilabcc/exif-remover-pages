@@ -1,4 +1,7 @@
 import './App.css'
+import photoScannerImg from './assets/screenshots/photo-scanner.png'
+import metadataViewImg from './assets/screenshots/metadata-view.png'
+import cleanResultsImg from './assets/screenshots/clean-results.png'
 
 // ── Data seams: hoist content for future slices ───────────────────────
 
@@ -27,10 +30,25 @@ const PROOF_POINTS = [
   },
 ] as const
 
-const SCREENSHOT_PLACEHOLDERS = [
-  { label: 'Photo Scanner', description: 'Select and scan photos' },
-  { label: 'Metadata View', description: 'See hidden EXIF data' },
-  { label: 'Clean Results', description: 'Review cleaned output' },
+const SCREENSHOTS = [
+  {
+    src: photoScannerImg,
+    label: 'Photo Scanner',
+    description: 'Select and scan photos for hidden metadata',
+    alt: 'Privacy Eraser photo scanner showing a grid of selectable photos with EXIF scan button',
+  },
+  {
+    src: metadataViewImg,
+    label: 'Metadata View',
+    description: 'See hidden EXIF data including GPS and camera details',
+    alt: 'Privacy Eraser displaying detected EXIF metadata for a photo including GPS coordinates and camera information',
+  },
+  {
+    src: cleanResultsImg,
+    label: 'Clean Results',
+    description: 'Review and share metadata-free photos',
+    alt: 'Privacy Eraser showing successfully cleaned photos with all EXIF metadata removed',
+  },
 ] as const
 
 const APP_STORE_CTA = {
@@ -102,23 +120,25 @@ function App() {
         </ul>
       </section>
 
-      {/* Screenshot Placeholders */}
+      {/* App Screenshots */}
       <section className="screenshots-section" aria-label="App screenshots">
         <h2>See it in action</h2>
         <ul className="screenshot-list">
-          {SCREENSHOT_PLACEHOLDERS.map((shot) => (
+          {SCREENSHOTS.map((shot) => (
             <li key={shot.label} className="screenshot-card">
-              <div className="screenshot-placeholder" aria-hidden="true">
-                <span className="placeholder-icon">📷</span>
-              </div>
+              <img
+                className="screenshot-image"
+                src={shot.src}
+                alt={shot.alt}
+                width={196}
+                height={426}
+                loading="lazy"
+              />
               <p className="screenshot-label">{shot.label}</p>
               <p className="screenshot-desc">{shot.description}</p>
             </li>
           ))}
         </ul>
-        <p className="placeholder-note">
-          Screenshots are placeholders — actual app images coming soon.
-        </p>
       </section>
 
       {/* Legal Links & Support */}
