@@ -106,6 +106,13 @@ describe('GitHub Pages deployment contract', () => {
   })
 
   describe('screenshot asset emission', () => {
+    it('dist/index.html advertises at least three screenshot assets from /assets/', () => {
+      const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
+      const screenshotRefs = html.match(/\/assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)/g)
+      expect(screenshotRefs).not.toBeNull()
+      expect(Array.from(new Set(screenshotRefs!))).toHaveLength(3)
+    })
+
     it('built JS bundle references at least three screenshot assets from /assets/', () => {
       const assetFiles = readdirSync(resolve(distDir, 'assets'))
       const jsFiles = assetFiles.filter((f: string) => f.endsWith('.js'))
