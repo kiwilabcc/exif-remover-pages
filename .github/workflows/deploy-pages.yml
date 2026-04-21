@@ -1,0 +1,77 @@
+# Deploy to GitHub Pages
+#
+# Assumes repo-level GitHub Pages settings:
+#   - Source: GitHub Actions
+#   - Custom domain: exifremover.kiwilab.cc
+#   - Enforce HTTPS: enabled
+#
+# These settings must be configured in Settings → Pages in the GitHub UI.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ milestone/M001 ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify deployment contract
+        run: npm run test:deployment
+
+      - name: Verify artifact
+        run: |
+          for f in dist/index.html dist/privacy/index.html dist/terms/index.html dist/support/index.html dist/CNAME; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing required artifact: $f"
+              exit 1
+            fi
+          done
+          echo "All required artifacts present."
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
