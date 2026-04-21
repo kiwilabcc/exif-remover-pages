@@ -1,49 +1,56 @@
 # Privacy Policy
 
-**Effective date:** 2026-04-14
+This privacy policy applies to the Privacy Eraser app (hereby referred to as the "Application") for mobile devices that was created by Wang Zhaoyu (hereby referred to as the "Service Provider") as a Free service. This service is intended for use "AS IS".
 
-## Overview
+This privacy policy is effective as of 2026-04-21.
 
-Privacy Eraser is a mobile application that scans your photos for hidden EXIF metadata (GPS coordinates, camera details, timestamps) and creates cleaned copies with that metadata removed. This policy explains how the app handles your information.
+**Effective date:** 2026-04-21
 
-## On-Device Processing
+## Information Collection and Use
 
-All photo scanning and metadata cleaning happens entirely on your device. Your photos and their metadata are never uploaded, transmitted, or sent to any server.
+The Application is designed to scan photos for hidden EXIF metadata, such as GPS coordinates, camera details, and timestamps, and to create cleaned copies with that metadata removed. All photo scanning and metadata cleaning happens on your device.
 
-## Data We Collect
-
-We do not collect, store, or transmit any personal data. Specifically:
+The Application does not collect, store, or transmit personal data when you download and use it. In particular:
 
 - No device or network identifiers are collected.
-- No usage monitoring or tracking tools are used.
-- No photos, metadata, or personal information ever leave your device.
-- No data is shared with external services.
+- No Analytics or tracking tools are used.
+- No photos, metadata, or personal information are ever uploaded, transmitted, or sent to the Service Provider or to any outside server. Your photos and metadata are never uploaded, transmitted, or sent during normal use.
+- Only the photos you explicitly choose are accessed for scanning.
 
-## How the App Works
+For a better experience while using the Application, the Service Provider may require access to the photos you choose from your photo library so the Application can scan them for EXIF metadata and create cleaned copies. This processing happens entirely on your device.
 
-1. You select photos from your photo library.
-2. The app scans the selected photos for EXIF metadata on your device.
-3. The app creates cleaned copies with metadata removed.
-4. You can open or share the cleaned copies from the result screen.
+## External Services
 
-Your original photos are never modified or deleted. Only the photos you explicitly select are accessed — nothing is scanned automatically.
+The Application does not send user data to external services for processing, measurement, or marketing. The Service Provider does not receive uploaded copies of your photos, metadata, or other personal information through the normal use of the Application.
 
-## Photo Library Access
+The Service Provider may disclose information only if required to do so by law or if necessary to protect rights, safety, or comply with a legal obligation. However, the Application is not designed to collect or retain personal data during normal operation.
 
-The app requests access to your photo library solely so you can select photos for scanning. Only the photos you choose are read. No automatic scanning or background access occurs.
+## Opt-Out Rights
 
-## Children's Privacy
+You can stop all information access by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.
 
-The app is not directed at children under 13, and we do not knowingly collect personal information from children.
+## Data Retention Policy
 
-## Data Retention
+Because the Application does not collect or transmit personal data during normal use, the Service Provider does not maintain a user-data retention database for the Application. Photo scanning and cleaning are temporary operations performed on your device, and your original photos are never modified.
 
-Since no data is collected or transmitted, there is no data to retain or delete. All processing is temporary and happens in your device's memory during use.
+## Children
 
-## Changes to This Policy
+The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.
 
-We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date.
+The Service Provider does not knowingly collect personally identifiable information from children. If you believe a child has provided personal information to the Service Provider, please contact the Service Provider at support@kiwilab.cc so that appropriate action can be taken.
+
+## Security
+
+The Service Provider is concerned about safeguarding the confidentiality of your information. Because the Application is designed so that processing happens on your device and no personal data is transmitted during normal use, the Application minimizes the amount of information that leaves your control.
+
+## Changes
+
+This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
+
+## Your Consent
+
+By using the Application, you are consenting to the handling of information as set forth in this Privacy Policy now and as amended by the Service Provider.
 
 ## Contact
 
-If you have questions about this policy or the app's privacy practices, please contact us at [support@kiwilab.cc](mailto:support@kiwilab.cc).
+If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at support@kiwilab.cc.
