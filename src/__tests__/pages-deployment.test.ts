@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -102,6 +102,62 @@ describe('GitHub Pages deployment contract', () => {
   describe('favicon and static assets', () => {
     it('dist/favicon.svg exists', () => {
       expect(existsSync(resolve(distDir, 'favicon.svg'))).toBe(true)
+    })
+  })
+
+  describe('screenshot asset emission', () => {
+    it('built JS bundle references at least three screenshot assets from /assets/', () => {
+      const assetFiles = readdirSync(resolve(distDir, 'assets'))
+      const jsFiles = assetFiles.filter((f: string) => f.endsWith('.js'))
+      expect(jsFiles.length).toBeGreaterThan(0)
+
+      const allJsContent = jsFiles
+        .map((f: string) => readFileSync(resolve(distDir, 'assets', f), 'utf-8'))
+        .join('\n')
+      const screenshotRefs = allJsContent.match(/\/assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)/g)
+      expect(screenshotRefs).not.toBeNull()
+      expect(screenshotRefs!.length).toBeGreaterThanOrEqual(3)
+    })
+
+    it('dist/assets/ contains at least three screenshot image files', () => {
+      const assetFiles = readdirSync(resolve(distDir, 'assets'))
+      const imageFiles = assetFiles.filter((f: string) =>
+        /\.(png|jpg|jpeg|webp)$/.test(f),
+      )
+      expect(imageFiles.length).toBeGreaterThanOrEqual(3)
+    })
+
+    for (const placeholder of [
+      'Screenshots are placeholders',
+      'actual app images coming soon',
+      'screenshot-placeholder',
+      'SCREENSHOT_PLACEHOLDERS',
+    ]) {
+      it(`built artifact does not contain "${placeholder}"`, () => {
+        // Check both index.html and built JS bundles for placeholder regression
+        const html = readFileSync(resolve(distDir, 'index.html'), 'utf-8')
+        expect(html).not.toContain(placeholder)
+        const assetFiles = readdirSync(resolve(distDir, 'assets'))
+        const jsFiles = assetFiles.filter((f: string) => f.endsWith('.js'))
+        for (const jsFile of jsFiles) {
+          const jsContent = readFileSync(resolve(distDir, 'assets', jsFile), 'utf-8')
+          expect(jsContent).not.toContain(placeholder)
+        }
+      })
+    }
+
+    it('built artifacts reference screenshot /assets/ paths (not src/)', () => {
+      const assetFiles = readdirSync(resolve(distDir, 'assets'))
+      const jsFiles = assetFiles.filter((f: string) => f.endsWith('.js'))
+      const allJsContent = jsFiles
+        .map((f: string) => readFileSync(resolve(distDir, 'assets', f), 'utf-8'))
+        .join('\n')
+      const screenshotRefs = allJsContent.match(/\/assets\/[a-zA-Z0-9_-]+\.(png|jpg|jpeg|webp)/g) || []
+      expect(screenshotRefs.length).toBeGreaterThanOrEqual(3)
+      for (const ref of screenshotRefs) {
+        expect(ref).toMatch(/^\/assets\//)
+        expect(ref).not.toContain('src/')
+      }
     })
   })
 })

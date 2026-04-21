@@ -49,6 +49,16 @@ describe('Mobile responsive CSS seam', () => {
     expect(mediaBlock![0]).toMatch(/\.screenshot-list\s*\{[^}]*grid-template-columns:\s*1fr/)
   })
 
+  it('mobile breakpoint uses .screenshot-image for real images, not placeholder classes', () => {
+    const mediaBlock = appCssSource.match(
+      /@media\s*\(\s*max-width:\s*768px\s*\)\s*\{[\s\S]*?\n\}/,
+    )
+    expect(mediaBlock).not.toBeNull()
+    expect(mediaBlock![0]).toMatch(/\.screenshot-image\s*\{/)
+    expect(mediaBlock![0]).not.toMatch(/\.screenshot-placeholder/)
+    expect(mediaBlock![0]).not.toMatch(/\.placeholder-icon/)
+  })
+
   it('nav links have min-height of at least 44px on mobile', () => {
     const mediaBlock = appCssSource.match(
       /@media\s*\(\s*max-width:\s*768px\s*\)\s*\{[\s\S]*?\n\}/,
@@ -121,6 +131,23 @@ describe('Landing page mobile structure', () => {
     render(<App />)
     const cta = document.querySelector('.cta-button.cta-disabled')
     expect(cta).not.toBeNull()
+  })
+
+  it('renders three screenshot images with .screenshot-image class', () => {
+    render(<App />)
+    const images = document.querySelectorAll<HTMLImageElement>('.screenshot-image')
+    expect(images).toHaveLength(3)
+    for (const img of images) {
+      expect(img.src).toBeTruthy()
+      expect(img.tagName).toBe('IMG')
+    }
+  })
+
+  it('screenshot cards contain no placeholder classes', () => {
+    render(<App />)
+    expect(document.querySelector('.screenshot-placeholder')).toBeNull()
+    expect(document.querySelector('.placeholder-icon')).toBeNull()
+    expect(document.querySelector('.placeholder-note')).toBeNull()
   })
 })
 
