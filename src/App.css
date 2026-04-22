@@ -34,7 +34,11 @@
 }
 
 .brand-icon {
-  font-size: 1.375rem;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  display: block;
 }
 
 .nav-list {

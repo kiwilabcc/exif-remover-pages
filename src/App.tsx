@@ -1,4 +1,5 @@
 import './App.css'
+import logoImg from './assets/logo.png'
 import photoScannerImg from './assets/screenshots/photo-scanner.png'
 import metadataViewImg from './assets/screenshots/metadata-view.png'
 import cleanResultsImg from './assets/screenshots/clean-results.png'
@@ -65,7 +66,14 @@ function App() {
       {/* Header */}
       <header className="landing-header">
         <a href="#home" className="brand">
-          <span className="brand-icon" aria-hidden="true">🛡️</span>
+          <img
+            className="brand-icon"
+            src={logoImg}
+            alt=""
+            width={28}
+            height={28}
+            aria-hidden="true"
+          />
           <span className="brand-name">Privacy Eraser</span>
         </a>
         <nav aria-label="Main navigation">
