@@ -1,6 +1,6 @@
 # Terms of Service
 
-These terms and conditions apply to the Privacy Eraser app (hereby referred to as the "Application") for mobile devices that was created by Wang Zhaoyu (hereby referred to as the "Service Provider") as a Free service.
+These terms and conditions apply to the Photo Privacy: EXIF Eraser app (hereby referred to as the "Application") for mobile devices that was created by Wang Zhaoyu (hereby referred to as the "Service Provider") as a Free service.
 
 These terms and conditions are effective as of 2026-04-21.
 
@@ -16,7 +16,7 @@ Unauthorized copying, modification of the Application, any part of the Applicati
 
 ## Description of the Service
 
-The Service Provider is dedicated to ensuring that the Application is as beneficial and efficient as possible. Privacy Eraser is a Free mobile application that scans photos for EXIF metadata, such as GPS coordinates, camera details, and timestamps, and creates cleaned copies with that metadata removed. All processing happens on your device.
+The Service Provider is dedicated to ensuring that the Application is as beneficial and efficient as possible. Photo Privacy: EXIF Eraser is a Free mobile application that scans photos for EXIF metadata, such as GPS coordinates, camera details, and timestamps, and creates cleaned copies with metadata removed on supported processing paths. All processing happens on your device.
 
 The Service Provider will clearly communicate any material change to the availability or nature of the Application's services.
 

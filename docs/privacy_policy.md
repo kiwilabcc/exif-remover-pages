@@ -1,6 +1,6 @@
 # Privacy Policy
 
-This privacy policy applies to the Privacy Eraser app (hereby referred to as the "Application") for mobile devices that was created by Wang Zhaoyu (hereby referred to as the "Service Provider") as a Free service. This service is intended for use "AS IS".
+This privacy policy applies to the Photo Privacy: EXIF Eraser app (hereby referred to as the "Application") for mobile devices that was created by Wang Zhaoyu (hereby referred to as the "Service Provider") as a Free service. This service is intended for use "AS IS".
 
 This privacy policy is effective as of 2026-04-21.
 
