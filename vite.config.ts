@@ -13,7 +13,9 @@ function injectScreenshotAssetHints() {
       const indexPath = resolve(distDir, 'index.html')
 
       const screenshotAssets = readdirSync(assetsDir)
-        .filter((fileName) => /\.(png|jpg|jpeg|webp)$/i.test(fileName))
+        .filter((fileName) =>
+          /^(photo-scanner|metadata-view|clean-results)-.+\.(png|jpg|jpeg|webp)$/i.test(fileName),
+        )
         .map((fileName) => `  <meta name="app-screenshot" content="/assets/${fileName}" />`)
         .join('\n')
 
