@@ -1,4 +1,5 @@
 import './App.css'
+import logoImg from './assets/logo.png'
 import photoScannerImg from './assets/screenshots/photo-scanner.png'
 import metadataViewImg from './assets/screenshots/metadata-view.png'
 import cleanResultsImg from './assets/screenshots/clean-results.png'
@@ -52,9 +53,10 @@ const SCREENSHOTS = [
 ] as const
 
 const APP_STORE_CTA = {
-  label: 'Download on the App Store',
-  badge: 'Coming soon',
-  href: '#',
+  eyebrow: 'Download on the',
+  label: 'App Store',
+  href: 'https://apps.apple.com/us/app/photo-privacy-exif-eraser/id6761869082',
+  ariaLabel: 'Download Privacy Eraser on the App Store',
 } as const
 
 // ── Component ─────────────────────────────────────────────────────────
@@ -65,7 +67,14 @@ function App() {
       {/* Header */}
       <header className="landing-header">
         <a href="#home" className="brand">
-          <span className="brand-icon" aria-hidden="true">🛡️</span>
+          <img
+            className="brand-icon"
+            src={logoImg}
+            alt=""
+            width={28}
+            height={28}
+            aria-hidden="true"
+          />
           <span className="brand-name">Privacy Eraser</span>
         </a>
         <nav aria-label="Main navigation">
@@ -96,12 +105,20 @@ function App() {
         </div>
         <a
           href={APP_STORE_CTA.href}
-          className="cta-button cta-disabled"
-          aria-disabled="true"
-          onClick={(e) => e.preventDefault()}
+          className="cta-button app-store-button"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={APP_STORE_CTA.ariaLabel}
         >
-          <span className="cta-label">{APP_STORE_CTA.label}</span>
-          <span className="cta-badge">{APP_STORE_CTA.badge}</span>
+          <span className="cta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M17.05 12.54c.03 3.22 2.82 4.29 2.85 4.31-.02.08-.45 1.54-1.48 3.05-.89 1.31-1.82 2.62-3.28 2.64-1.43.03-1.89-.85-3.53-.85-1.64 0-2.15.82-3.5.87-1.41.05-2.49-1.41-3.39-2.71C2.89 17.2 1.5 12.41 3.37 9.17c.93-1.61 2.59-2.63 4.39-2.66 1.37-.03 2.67.92 3.53.92.86 0 2.48-1.14 4.18-.97.71.03 2.71.29 4 2.18-.1.06-2.39 1.39-2.42 3.9ZM14.31 3.94c.75-.91 1.26-2.17 1.12-3.43-1.08.04-2.39.72-3.17 1.63-.69.8-1.29 2.08-1.13 3.31 1.2.09 2.43-.61 3.18-1.51Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span className="cta-copy">
+            <span className="cta-eyebrow">{APP_STORE_CTA.eyebrow}</span>
+            <span className="cta-label">{APP_STORE_CTA.label}</span>
+          </span>
         </a>
       </section>
 

@@ -228,10 +228,21 @@ describe('Landing page support retarget', () => {
     expect(detailsElements).toHaveLength(0)
   })
 
+  it('renders a live App Store CTA with the production listing URL', () => {
+    render(<App />)
+    const cta = screen.getByRole('link', { name: /download privacy eraser on the app store/i })
+    expect(cta).toHaveAttribute('href', 'https://apps.apple.com/us/app/photo-privacy-exif-eraser/id6761869082')
+    expect(cta).toHaveAttribute('target', '_blank')
+    expect(cta).toHaveAttribute('rel', expect.stringContaining('noopener'))
+    expect(screen.getByText('Download on the')).toBeInTheDocument()
+    expect(screen.getByText('App Store')).toBeInTheDocument()
+    expect(screen.queryByText(/Coming soon/i)).not.toBeInTheDocument()
+  })
+
   it('support nav item in source uses /support/ not #support', () => {
     // Source-level regression guard
-    expect(appSource).not.toMatch(/href:\s*['"]#support['"]/)
-    expect(appSource).toMatch(/href:\s*['"]\/support\/['"]/)
+    expect(appSource).not.toMatch(/href:\s*['"]#support['"]/) 
+    expect(appSource).toMatch(/href:\s*['"]\/support\/['"]/) 
   })
 })
 

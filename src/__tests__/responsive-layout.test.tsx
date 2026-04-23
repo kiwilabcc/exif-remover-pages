@@ -127,10 +127,13 @@ describe('Landing page mobile structure', () => {
     expect(hero).not.toBeNull()
   })
 
-  it('cta button is present and disabled', () => {
+  it('cta button is present and links to the App Store listing', () => {
     render(<App />)
-    const cta = document.querySelector('.cta-button.cta-disabled')
+    const cta = document.querySelector<HTMLAnchorElement>('.cta-button.app-store-button')
     expect(cta).not.toBeNull()
+    expect(cta!.getAttribute('href')).toBe('https://apps.apple.com/us/app/photo-privacy-exif-eraser/id6761869082')
+    expect(cta!.getAttribute('target')).toBe('_blank')
+    expect(cta!.getAttribute('rel')).toContain('noopener')
   })
 
   it('renders three screenshot images with .screenshot-image class', () => {
